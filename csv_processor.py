@@ -103,7 +103,8 @@ class CSVProcessorApp:
             
             # Get lab and assessment columns (case-insensitive)
             lab_columns = [col for col in df.columns if 'lab' in col.lower()]
-            assessment_columns = [col for col in df.columns if 'assessment' in col.lower()]
+            # Only include assessment columns that contain 'lesson review' and exclude 'module quiz'
+            assessment_columns = [col for col in df.columns if 'assessment' in col.lower() and 'lesson review' in col.lower() and 'module quiz' not in col.lower()]
             
             # Print detected columns
             print("Detected Lab columns:", lab_columns)
